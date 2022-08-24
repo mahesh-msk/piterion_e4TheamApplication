@@ -1,0 +1,6 @@
+.MPartStack { swt-maximize-visible: false; swt-minimize-visible: false }
+UserProfileWidget 
+{ header-background-color: rgb(0,255,255); button-bg-color : rgb(0,255,255); button-color : rgb(0,0,0)}
+#MyCSSTagForlblTheme{
+	background-color : '#org-eclipse-ui-workbench-INACTIVE_TAB_TEXT_COLOR';
+}

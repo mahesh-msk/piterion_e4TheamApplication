@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="Theme_Plugin_Project"
+            application="org.eclipse.e4.ui.workbench.swt.E4Application">
+         <property
+               name="lifeCycleURI"
+               value="bundleclass://Theme_Plugin_Project/theme_plugin_project.E4LifeCycle">
+         </property>
+         <property
+               name="applicationCSS"
+               value="platform:/plugin/Theme_Plugin_Project/css/default.css">
+         </property>
+         <property
+               name="appName"
+               value="Theme_Plugin_Project">
+         </property>
+         <property
+               name="cssTheme"
+               value="Theme_Plugin_Project.default">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.e4.ui.css.swt.theme">
+      <theme
+            basestylesheeturi="css/default.css"
+            id="Theme_Plugin_Project.default"
+            label="Default">
+      </theme>
+   </extension>
+   <extension
+         point="org.eclipse.e4.ui.css.core.propertyHandler">
+      <handler
+            adapter="theme_plugin_project.customwidget.UserProfileElementAdapter"
+            composite="true"
+            handler="theme_plugin_project.customwidget.UserProfileCSSHandler">
+         <property-name
+               name="header-background-color">
+         </property-name>
+         <property-name
+               name="font">
+         </property-name>
+         <property-name
+               name="button-bg-color">
+         </property-name>
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.e4.ui.css.core.elementProvider">
+      <provider
+            class="theme_plugin_project.customwidget.UserProfileWidgetElementProvider">
+         <widget
+               class="theme_plugin_project.customwidget.UserProfileWidget"></widget>
+      </provider>
+   </extension>
+
+</plugin>

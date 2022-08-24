@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_6wlLcMgZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.application" bindingContexts="_6wlLecgZEeSyMNYR5xypkQ">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_6wlLccgZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.window.main" label="Eclipse 4 RCP Application" width="500" height="600">
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_6wlLkMgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.ide.perspectivestack">
+      <children xsi:type="advanced:Perspective" xmi:id="_6wlLkcgZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.perspective.sample">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_6wlLksgZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.partsashcontainer.sample">
+          <children xsi:type="basic:PartStack" xmi:id="_6wlLk8gZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.partstack.sample">
+            <children xsi:type="basic:Part" xmi:id="_6wlLlMgZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.part.sample" contributionURI="bundleclass://Theme_Plugin_Project/theme_plugin_project.parts.SamplePart" label="Sample Part"/>
+            <children xsi:type="basic:Part" xmi:id="_F9-X4HkLEee9AMtCnYl-yQ" elementId="theme_plugin_project.UserProfileWidget" contributionURI="bundleclass://Theme_Plugin_Project/theme_plugin_project.parts.CSSScratchPadPart" label="UserProfileWidget"/>
+          </children>
+        </children>
+      </children>
+    </children>
+    <mainMenu xmi:id="_6wlLicgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.main.menu">
+      <children xsi:type="menu:Menu" xmi:id="_6wlLisgZEeSyMNYR5xypkQ" elementId="file" label="File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_6wlLi8gZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.handleditem.file.open" label="Open" iconURI="platform:/plugin/Theme_Plugin_Project/icons/sample.png" command="_6wlLgMgZEeSyMNYR5xypkQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_6wlLjMgZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.handleditem.save" label="Save" iconURI="platform:/plugin/Theme_Plugin_Project/icons/save_edit.png" command="_6wlLg8gZEeSyMNYR5xypkQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_6wlLjcgZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.handleditem.quit" label="Quit" command="_6wlLfMgZEeSyMNYR5xypkQ"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_6wlLjsgZEeSyMNYR5xypkQ" elementId="help" label="Help">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_6wlLj8gZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.handleditem.about" label="About" command="_6wlLhsgZEeSyMNYR5xypkQ"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_ZNy_YHjiEee6z643is8pcA" elementId="theme_plugin_project.menu.theme" label="Theme">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_bn6psOunEee_PaMR6tR61w" elementId="theme_plugin_project.handledmenuitem.treeviewermenu" label="TreeViewerMenu" command="_B2Bq4OulEee_PaMR6tR61w"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_bWWnUHjiEee6z643is8pcA" elementId="theme_plugin_project.handledmenuitem.theme" label="Theme" command="_mZrcwHjgEee6z643is8pcA"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_d707IHjqEee9AMtCnYl-yQ" elementId="theme_plugin_project.handledmenuitem.themeselect" label="ThemeSelect" command="_zl6ecHjpEee9AMtCnYl-yQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_4e3ggH3CEee8MaPmI9S1RQ" elementId="theme_plugin_project.handledmenuitem.openDialog" label="OpenDialog" command="_bUlNEH3BEee8MaPmI9S1RQ"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_IycEAIc3Eee529xrh6E1yw" elementId="theme_plugin_project.menu.history" label="History">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_N1GsoIc3Eee529xrh6E1yw" elementId="theme_plugin_project.handledmenuitem.admin" label="Admin" command="_e8N-kIc3Eee529xrh6E1yw"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_S78qoIc3Eee529xrh6E1yw" elementId="theme_plugin_project.handledmenuitem.user" label="User" command="_bRCE0Ie8Eee2HsRQCE4_nw"/>
+      </children>
+    </mainMenu>
+    <trimBars xmi:id="_6wlLlcgZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.trimbar.top">
+      <children xsi:type="menu:ToolBar" xmi:id="_6wlLlsgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.main.toolbar">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_6wlLl8gZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.handleditem.trimbar.top.open" iconURI="platform:/plugin/Theme_Plugin_Project/icons/sample.png" command="_6wlLgMgZEeSyMNYR5xypkQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_6wlLmMgZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.handleditem.trimbar.top.save" iconURI="platform:/plugin/Theme_Plugin_Project/icons/save_edit.png" command="_6wlLg8gZEeSyMNYR5xypkQ"/>
+      </children>
+    </trimBars>
+  </children>
+  <handlers xmi:id="_6wlLfcgZEeSyMNYR5xypkQ" elementId="theme_plugin_project.handler.quitCommand" contributionURI="bundleclass://Theme_Plugin_Project/theme_plugin_project.handlers.QuitHandler" command="_6wlLfMgZEeSyMNYR5xypkQ"/>
+  <handlers xmi:id="_6wlLgcgZEeSyMNYR5xypkQ" elementId="theme_plugin_project.handler.openCommand" contributionURI="bundleclass://Theme_Plugin_Project/theme_plugin_project.handlers.OpenHandler" command="_6wlLgMgZEeSyMNYR5xypkQ"/>
+  <handlers xmi:id="_6wlLhMgZEeSyMNYR5xypkQ" elementId="theme_plugin_project.handler.saveCommand" contributionURI="bundleclass://Theme_Plugin_Project/theme_plugin_project.handlers.SaveHandler" command="_6wlLg8gZEeSyMNYR5xypkQ"/>
+  <handlers xmi:id="_6wlLh8gZEeSyMNYR5xypkQ" elementId="theme_plugin_project.handler.aboutCommand" contributionURI="bundleclass://Theme_Plugin_Project/theme_plugin_project.handlers.AboutHandler" command="_6wlLhsgZEeSyMNYR5xypkQ"/>
+  <handlers xmi:id="_VvD5kHjgEee6z643is8pcA" elementId="theme_plugin_project.handler.themeCommandHandler" contributionURI="bundleclass://Theme_Plugin_Project/theme_plugin_project.handlers.ChangeThemeHandler" command="_mZrcwHjgEee6z643is8pcA"/>
+  <handlers xmi:id="_akJqIHjpEee9AMtCnYl-yQ" elementId="theme_plugin_project.handler.themeDialogCommandHandler" contributionURI="bundleclass://Theme_Plugin_Project/theme_plugin_project.handlers.ThemeChangeHandler" command="_zl6ecHjpEee9AMtCnYl-yQ"/>
+  <handlers xmi:id="_fhCmcH3BEee8MaPmI9S1RQ" elementId="theme_plugin_project.opendialoghandler" contributionURI="bundleclass://Theme_Plugin_Project/theme_plugin_project.handlers.OpendialogHandler" command="_bUlNEH3BEee8MaPmI9S1RQ"/>
+  <handlers xmi:id="_kToIIIc3Eee529xrh6E1yw" elementId="theme_plugin_project.adminhandler" contributionURI="bundleclass://Theme_Plugin_Project/theme_plugin_project.dialogs.AdminDialogHandler" command="_e8N-kIc3Eee529xrh6E1yw"/>
+  <handlers xmi:id="_p6jS8Ie8Eee2HsRQCE4_nw" elementId="theme_plugin_project.userhandler" contributionURI="bundleclass://Theme_Plugin_Project/theme_plugin_project.dialogs.UserDialogHandler" command="_bRCE0Ie8Eee2HsRQCE4_nw"/>
+  <handlers xmi:id="_FdxNoOulEee_PaMR6tR61w" elementId="theme_plugin_project.handler.treeViewerHandler" contributionURI="bundleclass://Theme_Plugin_Project/theme_plugin_project.handlers.TreeViewerHandler" command="_B2Bq4OulEee_PaMR6tR61w"/>
+  <bindingTables xmi:id="_6wlLfsgZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.bindingtable" bindingContext="_6wlLecgZEeSyMNYR5xypkQ">
+    <bindings xmi:id="_6wlLf8gZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.keybinding.m1q" keySequence="M1+Q" command="_6wlLfMgZEeSyMNYR5xypkQ"/>
+    <bindings xmi:id="_6wlLgsgZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.keybinding.m1o" keySequence="M1+O" command="_6wlLgMgZEeSyMNYR5xypkQ"/>
+    <bindings xmi:id="_6wlLhcgZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.keybinding.m1s" keySequence="M1+S" command="_6wlLg8gZEeSyMNYR5xypkQ"/>
+    <bindings xmi:id="_6wlLiMgZEeSyMNYR5xypkQ" elementId="Theme_Plugin_Project.keybinding.m1a" keySequence="M1+A" command="_6wlLhsgZEeSyMNYR5xypkQ"/>
+  </bindingTables>
+  <rootContext xmi:id="_6wlLecgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_6wlLesgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
+    <children xmi:id="_6wlLe8gZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
+  </rootContext>
+  <commands xmi:id="_6wlLfMgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.file.exit" commandName="quitCommand"/>
+  <commands xmi:id="_6wlLgMgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.file.open" commandName="openCommand"/>
+  <commands xmi:id="_6wlLg8gZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.file.save" commandName="saveCommand"/>
+  <commands xmi:id="_6wlLhsgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.help.aboutAction" commandName="aboutCommand"/>
+  <commands xmi:id="_mZrcwHjgEee6z643is8pcA" elementId="theme_plugin_project.command.themeCommand" commandName="themeCommand"/>
+  <commands xmi:id="_zl6ecHjpEee9AMtCnYl-yQ" elementId="theme_plugin_project.command.ThemeDialogCommand" commandName="themeDialogCommand"/>
+  <commands xmi:id="_bUlNEH3BEee8MaPmI9S1RQ" elementId="theme_plugin_project.opendialog" commandName="OpenDialog"/>
+  <commands xmi:id="_e8N-kIc3Eee529xrh6E1yw" elementId="theme_plugin_project.admindialog" commandName="AdminDialog"/>
+  <commands xmi:id="_bRCE0Ie8Eee2HsRQCE4_nw" elementId="theme_plugin_project.admindialogcommand" commandName="UserDialog"/>
+  <commands xmi:id="_B2Bq4OulEee_PaMR6tR61w" elementId="theme_plugin_project.command.treeviewerdialog" commandName="TreeViewer Dialog"/>
+  <addons xmi:id="_6wlLcsgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_6wlLc8gZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_6wlLdMgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_6wlLdcgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_6wlLdsgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.handler.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
+  <addons xmi:id="_6wlLd8gZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_6wlLeMgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+</application:Application>
