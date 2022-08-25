@@ -1,3 +1,18 @@
+/*
+ * FILE:            UserDialog.java
+ *
+ * SW-COMPONENT:    Theme_Plugin_Project
+ *
+ * DESCRIPTION:     -
+ *
+ * COPYRIGHT:       © 2015 - 2022 Robert Bosch GmbH
+ *
+ * The reproduction, distribution and utilization of this file as
+ * well as the communication of its contents to others without express
+ * authorization is prohibited. Offenders will be held liable for the
+ * payment of damages. All rights reserved in the event of the grant
+ * of a patent, utility model or design.
+ */
 package theme_plugin_project.dialogs;
 
 import java.text.ParseException;
@@ -14,14 +29,11 @@ import org.eclipse.nebula.widgets.cdatetime.CDT;
 import org.eclipse.nebula.widgets.cdatetime.CDateTime;
 import org.eclipse.nebula.widgets.nattable.NatTable;
 import org.eclipse.nebula.widgets.nattable.export.command.ExportCommand;
-import org.eclipse.nebula.widgets.pgroup.PGroup;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.VerifyEvent;
-import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -29,10 +41,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.osgi.service.prefs.BackingStoreException;
@@ -80,21 +90,16 @@ public class UserDialog extends Dialog {
 		Composite container = (Composite) super.createDialogArea(parent);
 		container.setLayout(GridLayoutFactory.fillDefaults().create());
 
-		final ScrolledComposite sc = new ScrolledComposite(container, SWT.BORDER | SWT.V_SCROLL|SWT.H_SCROLL);
+		final ScrolledComposite sc = new ScrolledComposite(container, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
 		sc.setLayoutData(GridDataFactory.fillDefaults().grab(true, true).hint(SWT.DEFAULT, 200).create());
 		sc.setExpandHorizontal(true);
 		sc.setExpandVertical(true);
 		sc.setMinSize(300, 300);
-		sc.addListener(SWT.Resize,new Listener() {
-			
-			@Override
-			public void handleEvent(Event event) {
-				int height=sc.getClientArea().height;
-				sc.setMinSize(container.computeSize(height, SWT.DEFAULT));
-				
-			}
+		sc.addListener(SWT.Resize, event -> {
+			int height = sc.getClientArea().height;
+			sc.setMinSize(container.computeSize(height, SWT.DEFAULT));
+
 		});
-		
 
 		final Composite containerMain = new Composite(sc, SWT.NULL);
 		containerMain.setLayout(GridLayoutFactory.swtDefaults().numColumns(3).create());
@@ -162,7 +167,7 @@ public class UserDialog extends Dialog {
 
 	private void createUserHistoryFilterComposite(Composite parent) {
 
-		PGroup composite = new PGroup(parent, SWT.SMOOTH);
+		Group composite = new Group(parent, SWT.SMOOTH);
 
 		composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
 		composite.setLayout(new GridLayout(6, false));
@@ -176,7 +181,7 @@ public class UserDialog extends Dialog {
 		lblCdate.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 		lblCdate.setText("Start Date");
 		CDateTime startDate = new CDateTime(composite, CDT.DROP_DOWN | CDT.TIME_MEDIUM | CDT.DATE_LONG | CDT.DATE_LONG);
-		startDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
+//		startDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
 		String stDate = prefs.get("userHistory.startDate", "");
 		if (!stDate.isEmpty()) {
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
@@ -191,7 +196,7 @@ public class UserDialog extends Dialog {
 		lblEndDate.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
 		lblEndDate.setText("End Date");
 		CDateTime endDate = new CDateTime(composite, CDT.DROP_DOWN | CDT.TIME_MEDIUM | CDT.DATE_LONG | CDT.DATE_LONG);
-		endDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
+//		endDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
 		String eDate = prefs.get("userHistory.endDate", "");
 		if (!eDate.isEmpty()) {
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
@@ -208,7 +213,7 @@ public class UserDialog extends Dialog {
 		lblUserName.setText("User Name");
 
 		Combo cmbUser = new Combo(composite, SWT.NONE);
-		cmbUser.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbUser.setItems("=", "LIKE", "<>");
 		GridData gd_cmbUser = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_cmbUser.widthHint = 34;
 		cmbUser.setLayoutData(gd_cmbUser);
@@ -230,7 +235,7 @@ public class UserDialog extends Dialog {
 		lblHost.setText("Host");
 
 		Combo cmbHost = new Combo(composite, SWT.NONE);
-		cmbHost.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbHost.setItems("=", "LIKE", "<>");
 		cmbHost.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Text txtHostUserHistoryfilter = new Text(composite, SWT.BORDER);
@@ -249,7 +254,7 @@ public class UserDialog extends Dialog {
 		lblNewLabel_1.setText("Site");
 
 		Combo cmbSite = new Combo(composite, SWT.NONE);
-		cmbSite.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbSite.setItems("=", "LIKE", "<>");
 		cmbSite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Text txtSiteUserHistoryfilter = new Text(composite, SWT.BORDER);
@@ -268,7 +273,7 @@ public class UserDialog extends Dialog {
 		lblAdminarea.setText("AdminArea");
 
 		Combo cmbAdminArea = new Combo(composite, SWT.NONE);
-		cmbAdminArea.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbAdminArea.setItems("=", "LIKE", "<>");
 		cmbAdminArea.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Text txtAdminareafilter = new Text(composite, SWT.BORDER);
@@ -288,7 +293,7 @@ public class UserDialog extends Dialog {
 		lblProject.setText("Project");
 
 		Combo cmbProject = new Combo(composite, SWT.NONE);
-		cmbProject.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbProject.setItems("=", "LIKE", "<>");
 		cmbProject.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Text txtProjectfilter = new Text(composite, SWT.BORDER);
@@ -307,7 +312,7 @@ public class UserDialog extends Dialog {
 		lblApplication.setText("Application");
 
 		Combo cmbApplication = new Combo(composite, SWT.NONE);
-		cmbApplication.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbApplication.setItems("=", "LIKE", "<>");
 		cmbApplication.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Text txtApplicationfilter = new Text(composite, SWT.BORDER);
@@ -327,11 +332,11 @@ public class UserDialog extends Dialog {
 		lblResult.setText("Result");
 
 		Combo cmbResult = new Combo(composite, SWT.NONE);
-		cmbResult.setItems(new String[] { "=", "<>" });
+		cmbResult.setItems("=", "<>");
 		cmbResult.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Combo resultFilter = new Combo(composite, SWT.NONE);
-		resultFilter.setItems(new String[] { "SUCCESS", "FAILURE" });
+		resultFilter.setItems("SUCCESS", "FAILURE");
 		resultFilter.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
 
 		String result = prefs.get("userHistoryTable.result", "");
@@ -349,25 +354,21 @@ public class UserDialog extends Dialog {
 		String limit = prefs.get("userHistoryTable.limit", "1000");
 		txtUserHistoryLimitfilter.setText(limit);
 		txtUserHistoryLimitfilter.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
-		txtUserHistoryLimitfilter.addVerifyListener(new VerifyListener() {
+		txtUserHistoryLimitfilter.addVerifyListener(e -> {
 
-			@Override
-			public void verifyText(VerifyEvent e) {
+			String string = e.text;
+			char[] chars = new char[string.length()];
+			string.getChars(0, chars.length, chars, 0);
+			for (char element : chars) {
+				if ((('a' > element) || (element > 'z'))) {
+					e.doit = true;
 
-				String string = e.text;
-				char[] chars = new char[string.length()];
-				string.getChars(0, chars.length, chars, 0);
-				for (int i = 0; i < chars.length; i++) {
-					if (!('a' <= chars[i] && chars[i] <= 'z')) {
-						e.doit = true;
-
-					} else {
-						e.doit = false;
-					}
-
+				} else {
+					e.doit = false;
 				}
 
 			}
+
 		});
 
 		Composite buttonBarComposite = new Composite(composite, SWT.NONE);
@@ -417,7 +418,7 @@ public class UserDialog extends Dialog {
 				StringBuilder query = new StringBuilder();
 				query.append("select * from  USER_HISTORY_TBL where ");
 
-				ArrayList<String> conditions = new ArrayList<String>();
+				ArrayList<String> conditions = new ArrayList<>();
 				String stDateString = null;
 				if (startDate.getSelection() != null) {
 					Date stDate = startDate.getSelection();
@@ -526,13 +527,13 @@ public class UserDialog extends Dialog {
 			e1.printStackTrace();
 		}
 
-		composite.setExpanded(false);
+//		composite.setExpanded(false);
 
 	}
 
 	private void createUserStatusFilterComposite(Composite parent) {
 
-		PGroup composite = new PGroup(parent, SWT.SMOOTH);
+		Group composite = new Group(parent, SWT.SMOOTH);
 
 		composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
 		composite.setLayout(new GridLayout(6, false));
@@ -546,7 +547,7 @@ public class UserDialog extends Dialog {
 		lblCdate.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 		lblCdate.setText("Start Date");
 		CDateTime startDate = new CDateTime(composite, CDT.DROP_DOWN | CDT.TIME_MEDIUM | CDT.DATE_LONG | CDT.DATE_LONG);
-		startDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
+//		startDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
 		String stDate = prefs.get("userStatusTable.startDate", "");
 		if (!stDate.isEmpty()) {
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
@@ -561,7 +562,7 @@ public class UserDialog extends Dialog {
 		lblEndDate.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
 		lblEndDate.setText("End Date");
 		CDateTime endDate = new CDateTime(composite, CDT.DROP_DOWN | CDT.TIME_MEDIUM | CDT.DATE_LONG | CDT.DATE_LONG);
-		endDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
+//		endDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
 		String eDate = prefs.get("userStatusTable.endDate", "");
 		if (!eDate.isEmpty()) {
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
@@ -578,7 +579,7 @@ public class UserDialog extends Dialog {
 		lblUserName.setText("User Name");
 
 		Combo cmbUser = new Combo(composite, SWT.NONE);
-		cmbUser.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbUser.setItems("=", "LIKE", "<>");
 		GridData gd_cmbUser = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_cmbUser.widthHint = 34;
 		cmbUser.setLayoutData(gd_cmbUser);
@@ -600,7 +601,7 @@ public class UserDialog extends Dialog {
 		lblHost.setText("Host");
 
 		Combo cmbHost = new Combo(composite, SWT.NONE);
-		cmbHost.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbHost.setItems("=", "LIKE", "<>");
 		cmbHost.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Text txtHostUserHistoryfilter = new Text(composite, SWT.BORDER);
@@ -619,7 +620,7 @@ public class UserDialog extends Dialog {
 		lblNewLabel_1.setText("Site");
 
 		Combo cmbSite = new Combo(composite, SWT.NONE);
-		cmbSite.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbSite.setItems("=", "LIKE", "<>");
 		cmbSite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Text txtSiteUserHistoryfilter = new Text(composite, SWT.BORDER);
@@ -638,7 +639,7 @@ public class UserDialog extends Dialog {
 		lblAdminarea.setText("AdminArea");
 
 		Combo cmbAdminArea = new Combo(composite, SWT.NONE);
-		cmbAdminArea.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbAdminArea.setItems("=", "LIKE", "<>");
 		cmbAdminArea.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Text txtAdminareafilter = new Text(composite, SWT.BORDER);
@@ -658,7 +659,7 @@ public class UserDialog extends Dialog {
 		lblProject.setText("Project");
 
 		Combo cmbProject = new Combo(composite, SWT.NONE);
-		cmbProject.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbProject.setItems("=", "LIKE", "<>");
 		cmbProject.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Text txtProjectfilter = new Text(composite, SWT.BORDER);
@@ -677,7 +678,7 @@ public class UserDialog extends Dialog {
 		lblApplication.setText("Application");
 
 		Combo cmbApplication = new Combo(composite, SWT.NONE);
-		cmbApplication.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbApplication.setItems("=", "LIKE", "<>");
 		cmbApplication.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Text txtApplicationfilter = new Text(composite, SWT.BORDER);
@@ -697,11 +698,11 @@ public class UserDialog extends Dialog {
 		lblResult.setText("Result");
 
 		Combo cmbResult = new Combo(composite, SWT.NONE);
-		cmbResult.setItems(new String[] { "=", "<>" });
+		cmbResult.setItems("=", "<>");
 		cmbResult.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Combo resultFilter = new Combo(composite, SWT.NONE);
-		resultFilter.setItems(new String[] { "SUCCESS", "FAILURE" });
+		resultFilter.setItems("SUCCESS", "FAILURE");
 		resultFilter.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
 
 		String result = prefs.get("userStatusTable.result", "");
@@ -722,25 +723,21 @@ public class UserDialog extends Dialog {
 		txtLimitfilter.setText(limit);
 
 		txtLimitfilter.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
-		txtLimitfilter.addVerifyListener(new VerifyListener() {
+		txtLimitfilter.addVerifyListener(e -> {
 
-			@Override
-			public void verifyText(VerifyEvent e) {
+			String string = e.text;
+			char[] chars = new char[string.length()];
+			string.getChars(0, chars.length, chars, 0);
+			for (char element : chars) {
+				if ((('a' > element) || (element > 'z'))) {
+					e.doit = true;
 
-				String string = e.text;
-				char[] chars = new char[string.length()];
-				string.getChars(0, chars.length, chars, 0);
-				for (int i = 0; i < chars.length; i++) {
-					if (!('a' <= chars[i] && chars[i] <= 'z')) {
-						e.doit = true;
-
-					} else {
-						e.doit = false;
-					}
-
+				} else {
+					e.doit = false;
 				}
 
 			}
+
 		});
 
 		Composite buttonBarComposite = new Composite(composite, SWT.NONE);
@@ -790,7 +787,7 @@ public class UserDialog extends Dialog {
 				StringBuilder query = new StringBuilder();
 				query.append("select * from  USER_HISTORY_TBL where ");
 
-				ArrayList<String> conditions = new ArrayList<String>();
+				ArrayList<String> conditions = new ArrayList<>();
 				String stDateString = null;
 				if (startDate.getSelection() != null) {
 					Date stDate = startDate.getSelection();
@@ -899,7 +896,7 @@ public class UserDialog extends Dialog {
 			e1.printStackTrace();
 		}
 
-		composite.setExpanded(false);
+//		composite.setExpanded(false);
 
 	}
 

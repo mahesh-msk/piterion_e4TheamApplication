@@ -1,3 +1,18 @@
+/*
+ * FILE:            AdminDialog.java
+ *
+ * SW-COMPONENT:    Theme_Plugin_Project
+ *
+ * DESCRIPTION:     -
+ *
+ * COPYRIGHT:       © 2015 - 2022 Robert Bosch GmbH
+ *
+ * The reproduction, distribution and utilization of this file as
+ * well as the communication of its contents to others without express
+ * authorization is prohibited. Offenders will be held liable for the
+ * payment of damages. All rights reserved in the event of the grant
+ * of a patent, utility model or design.
+ */
 package theme_plugin_project.dialogs;
 
 import java.text.ParseException;
@@ -14,14 +29,11 @@ import org.eclipse.nebula.widgets.cdatetime.CDT;
 import org.eclipse.nebula.widgets.cdatetime.CDateTime;
 import org.eclipse.nebula.widgets.nattable.NatTable;
 import org.eclipse.nebula.widgets.nattable.export.command.ExportCommand;
-import org.eclipse.nebula.widgets.pgroup.PGroup;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.VerifyEvent;
-import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -164,8 +176,8 @@ public class AdminDialog extends Dialog {
 	}
 
 	private void createFilterComposite1(Composite parent) {
-		PGroup composite = new PGroup(parent, SWT.SMOOTH);
-		composite.setExpanded(false);
+		Group composite = new Group(parent, SWT.SMOOTH);
+//		composite.setExpanded(false);
 		composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
 		composite.setLayout(new GridLayout(6, false));
 		composite.setText("AdminHistoryFilter Filter");
@@ -180,7 +192,7 @@ public class AdminDialog extends Dialog {
 		lblCdate.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 		lblCdate.setText("Start Date");
 		CDateTime startDate = new CDateTime(composite, CDT.BORDER | CDT.DROP_DOWN | CDT.DATE_LONG | CDT.TIME_MEDIUM);
-		startDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
+//		startDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
 		String stDate = prefs.get("adminHistory.startDate", "");
 
 		if (!stDate.isEmpty()) {
@@ -197,7 +209,7 @@ public class AdminDialog extends Dialog {
 		lblEndDate.setText("End Date");
 
 		CDateTime endDate = new CDateTime(composite, CDT.BORDER | CDT.TIME_MEDIUM | CDT.DROP_DOWN | CDT.DATE_LONG);
-		endDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
+//		endDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
 		String eDate = prefs.get("adminHistory.endDate", "");
 
 		if (!eDate.isEmpty()) {
@@ -211,10 +223,10 @@ public class AdminDialog extends Dialog {
 		}
 		Label lblAdminName = new Label(composite, SWT.NONE);
 		lblAdminName.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		
+
 		lblAdminName.setText("Admin Name");
 		Combo cmbAdminNameHistorytbl = new Combo(composite, SWT.NONE);
-		cmbAdminNameHistorytbl.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbAdminNameHistorytbl.setItems("=", "LIKE", "<>");
 		GridData gd_cmbUser = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_cmbUser.widthHint = 34;
 		cmbAdminNameHistorytbl.setLayoutData(gd_cmbUser);
@@ -236,11 +248,11 @@ public class AdminDialog extends Dialog {
 		lblOperation.setText("Operation");
 
 		Combo cmbOperation = new Combo(composite, SWT.NONE);
-		cmbOperation.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbOperation.setItems("=", "LIKE", "<>");
 		cmbOperation.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Combo operationFilter = new Combo(composite, SWT.NONE);
-		operationFilter.setItems(new String[] { "OperationDone", "NotDone" });
+		operationFilter.setItems("OperationDone", "NotDone");
 		operationFilter.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
 
 		String operaionValue = prefs.get("adminHistory.operation", "");
@@ -257,7 +269,7 @@ public class AdminDialog extends Dialog {
 		lblAdinArea.setText("AdminArea");
 
 		Combo cmbAdminArea = new Combo(composite, SWT.NONE);
-		cmbAdminArea.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbAdminArea.setItems("=", "LIKE", "<>");
 		cmbAdminArea.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		txtAdmimAreafiltertext = new Text(composite, SWT.BORDER);
@@ -277,7 +289,7 @@ public class AdminDialog extends Dialog {
 		lblProject.setText("Project");
 
 		Combo cmbProject = new Combo(composite, SWT.NONE);
-		cmbProject.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbProject.setItems("=", "LIKE", "<>");
 		cmbProject.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		txtProjectfiltertext = new Text(composite, SWT.BORDER);
@@ -299,7 +311,7 @@ public class AdminDialog extends Dialog {
 		lblProjectApplication.setText("ProjectApplication");
 
 		Combo cmbProjectApplication = new Combo(composite, SWT.NONE);
-		cmbProjectApplication.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbProjectApplication.setItems("=", "LIKE", "<>");
 		cmbProjectApplication.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		txtProjectApplicationfiltertext = new Text(composite, SWT.BORDER);
@@ -319,7 +331,7 @@ public class AdminDialog extends Dialog {
 		lblUserName.setText("UserName");
 
 		Combo cmbUserName = new Combo(composite, SWT.NONE);
-		cmbUserName.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbUserName.setItems("=", "LIKE", "<>");
 		cmbUserName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		txtUserNamefiltertext = new Text(composite, SWT.BORDER);
@@ -340,7 +352,7 @@ public class AdminDialog extends Dialog {
 		lblStartApplication.setText("StartApplication");
 
 		Combo cmbStartApplication = new Combo(composite, SWT.NONE);
-		cmbStartApplication.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbStartApplication.setItems("=", "LIKE", "<>");
 		cmbStartApplication.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		txtStartApplicationfiltertext = new Text(composite, SWT.BORDER);
@@ -362,11 +374,11 @@ public class AdminDialog extends Dialog {
 		lblRelationType.setText("RelationType");
 
 		Combo cmbRelationType = new Combo(composite, SWT.NONE);
-		cmbRelationType.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbRelationType.setItems("=", "LIKE", "<>");
 		cmbRelationType.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Combo relationTypeFilter = new Combo(composite, SWT.NONE);
-		relationTypeFilter.setItems(new String[] { "OperationDone", "NotDone" });
+		relationTypeFilter.setItems("OperationDone", "NotDone");
 		relationTypeFilter.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
 		String relationType = prefs.get("adminHistory.relationType", "");
 		if (!relationType.isEmpty()) {
@@ -383,11 +395,11 @@ public class AdminDialog extends Dialog {
 		lblStatus.setText("Status");
 
 		Combo cmbStatus = new Combo(composite, SWT.NONE);
-		cmbStatus.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbStatus.setItems("=", "LIKE", "<>");
 		cmbStatus.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Combo statusFilter = new Combo(composite, SWT.NONE);
-		statusFilter.setItems(new String[] { "OperationDone", "NotDone" });
+		statusFilter.setItems("OperationDone", "NotDone");
 		statusFilter.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
 		String status = prefs.get("adminHistory.status", "");
 		if (!status.isEmpty()) {
@@ -403,7 +415,7 @@ public class AdminDialog extends Dialog {
 		lblSite.setText("Site");
 
 		Combo cmbSite = new Combo(composite, SWT.NONE);
-		cmbSite.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbSite.setItems("=", "LIKE", "<>");
 		cmbSite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		txtSitefiltertext = new Text(composite, SWT.BORDER);
@@ -424,7 +436,7 @@ public class AdminDialog extends Dialog {
 		lblGroupName.setText("GroupName");
 
 		Combo cmbGroupName = new Combo(composite, SWT.NONE);
-		cmbGroupName.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbGroupName.setItems("=", "LIKE", "<>");
 		cmbGroupName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		txtGroupNamefiltertext = new Text(composite, SWT.BORDER);
@@ -446,7 +458,7 @@ public class AdminDialog extends Dialog {
 		lblUserApplication.setText("UserApplication");
 
 		Combo cmbUserApplication = new Combo(composite, SWT.NONE);
-		cmbUserApplication.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbUserApplication.setItems("=", "LIKE", "<>");
 		cmbUserApplication.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		txtUserApplicationfiltertext = new Text(composite, SWT.BORDER);
@@ -466,7 +478,7 @@ public class AdminDialog extends Dialog {
 		lblDirectory.setText("Directory");
 
 		Combo cmbDirectory = new Combo(composite, SWT.NONE);
-		cmbDirectory.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbDirectory.setItems("=", "LIKE", "<>");
 		cmbDirectory.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		txtDirectoryfiltertext = new Text(composite, SWT.BORDER);
@@ -487,7 +499,7 @@ public class AdminDialog extends Dialog {
 		lblRole.setText("Role");
 
 		Combo cmbRole = new Combo(composite, SWT.NONE);
-		cmbRole.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbRole.setItems("=", "LIKE", "<>");
 		cmbRole.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		txtRolefiltertext = new Text(composite, SWT.BORDER);
@@ -513,25 +525,21 @@ public class AdminDialog extends Dialog {
 
 		txtLimitfilter.setText(limit);
 
-		txtLimitfilter.addVerifyListener(new VerifyListener() {
+		txtLimitfilter.addVerifyListener(e -> {
 
-			@Override
-			public void verifyText(VerifyEvent e) {
+			String string = e.text;
+			char[] chars = new char[string.length()];
+			string.getChars(0, chars.length, chars, 0);
+			for (char element : chars) {
+				if ((('a' > element) || (element > 'z'))) {
+					e.doit = true;
 
-				String string = e.text;
-				char[] chars = new char[string.length()];
-				string.getChars(0, chars.length, chars, 0);
-				for (int i = 0; i < chars.length; i++) {
-					if (!('a' <= chars[i] && chars[i] <= 'z')) {
-						e.doit = true;
-
-					} else {
-						e.doit = false;
-					}
-
+				} else {
+					e.doit = false;
 				}
 
 			}
+
 		});
 
 		// ButtonComposite
@@ -601,11 +609,12 @@ public class AdminDialog extends Dialog {
 		applyButton.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		applyButton.setText("Apply");
 		applyButton.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 
 				StringBuilder query = new StringBuilder();
 				query.append("Select * from ADMIN_HISTORY_RELATIONS_TBL Where ");
-				ArrayList<String> conditions = new ArrayList<String>();
+				ArrayList<String> conditions = new ArrayList<>();
 
 				String stDateString = null;
 				if (startDate.getSelection() != null) {
@@ -766,16 +775,15 @@ public class AdminDialog extends Dialog {
 		try {
 			prefs.flush();
 		} catch (BackingStoreException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		composite.setExpanded(false);
+//		composite.setExpanded(false);
 
 	}
 
 	private void createFilterComposite(Composite parent) {
 
-		PGroup composite = new PGroup(parent, SWT.SMOOTH);
+		Group composite = new Group(parent, SWT.SMOOTH);
 
 		composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
 		composite.setLayout(new GridLayout(6, false));
@@ -792,7 +800,7 @@ public class AdminDialog extends Dialog {
 		lblCdate.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 		lblCdate.setText("Start Date");
 		CDateTime startDate = new CDateTime(composite, CDT.DROP_DOWN | CDT.TIME_MEDIUM | CDT.DATE_LONG | CDT.DATE_LONG);
-		startDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
+//		startDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
 		String stDate = prefs.get("adminBaseObject.stDate", "");
 
 		if (!stDate.isEmpty()) {
@@ -809,7 +817,7 @@ public class AdminDialog extends Dialog {
 		lblCdate1.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 		lblCdate1.setText("End Date");
 		CDateTime endDate = new CDateTime(composite, CDT.DROP_DOWN | CDT.TIME_MEDIUM | CDT.DATE_LONG | CDT.DATE_LONG);
-		endDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
+//		endDate.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false));
 		String eDate = prefs.get("adminBaseObject.eDate", "");
 		if (!eDate.isEmpty()) {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
@@ -828,7 +836,7 @@ public class AdminDialog extends Dialog {
 		lblAdminName.setText("Admin Name");
 
 		Combo cmbAdminName = new Combo(composite, SWT.NONE);
-		cmbAdminName.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbAdminName.setItems("=", "LIKE", "<>");
 		GridData gd_cmbUser = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_cmbUser.widthHint = 34;
 		cmbAdminName.setLayoutData(gd_cmbUser);
@@ -850,11 +858,11 @@ public class AdminDialog extends Dialog {
 		lblOperation.setText("Operation");
 
 		Combo cmbOperation = new Combo(composite, SWT.NONE);
-		cmbOperation.setItems(new String[] { "=", "<>" });
+		cmbOperation.setItems("=", "<>");
 		cmbOperation.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Combo operationFilter = new Combo(composite, SWT.NONE);
-		operationFilter.setItems(new String[] { "OperationDone", "NotDone" });
+		operationFilter.setItems("OperationDone", "NotDone");
 		operationFilter.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
 		String operationValue = prefs.get("adminBaseObject.operation", "");
 		if (!operationValue.isEmpty()) {
@@ -869,7 +877,7 @@ public class AdminDialog extends Dialog {
 		lblObjectName.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		lblObjectName.setText("Object Name");
 		Combo cmbObjectName = new Combo(composite, SWT.NONE);
-		cmbObjectName.setItems(new String[] { "=", "LIKE", "<>" });
+		cmbObjectName.setItems("=", "LIKE", "<>");
 
 		txtObjectNamefiltertext = new Text(composite, SWT.BORDER);
 		txtObjectNamefiltertext.setText("");
@@ -888,11 +896,11 @@ public class AdminDialog extends Dialog {
 		lblResult.setText("Result");
 
 		Combo cmbResult = new Combo(composite, SWT.NONE);
-		cmbResult.setItems(new String[] { "=", "<>" });
+		cmbResult.setItems("=", "<>");
 		cmbResult.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
 		Combo resultFilter = new Combo(composite, SWT.NONE);
-		resultFilter.setItems(new String[] { "SUCCESS", "FAILURE" });
+		resultFilter.setItems("SUCCESS", "FAILURE");
 		resultFilter.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
 		String resultValue = prefs.get("adminBaseObject.result", "");
 		if (!resultValue.isEmpty()) {
@@ -914,25 +922,21 @@ public class AdminDialog extends Dialog {
 
 		txtBaseObjectLimitfilter.setText(limit);
 
-		txtBaseObjectLimitfilter.addVerifyListener(new VerifyListener() {
+		txtBaseObjectLimitfilter.addVerifyListener(e -> {
 
-			@Override
-			public void verifyText(VerifyEvent e) {
+			String string = e.text;
+			char[] chars = new char[string.length()];
+			string.getChars(0, chars.length, chars, 0);
+			for (char element : chars) {
+				if ((('a' > element) || (element > 'z'))) {
+					e.doit = true;
 
-				String string = e.text;
-				char[] chars = new char[string.length()];
-				string.getChars(0, chars.length, chars, 0);
-				for (int i = 0; i < chars.length; i++) {
-					if (!('a' <= chars[i] && chars[i] <= 'z')) {
-						e.doit = true;
-
-					} else {
-						e.doit = false;
-					}
-
+				} else {
+					e.doit = false;
 				}
 
 			}
+
 		});
 
 		// ButtonComposite
@@ -978,7 +982,7 @@ public class AdminDialog extends Dialog {
 			public void widgetSelected(SelectionEvent e) {
 				StringBuilder query = new StringBuilder();
 				query.append("select * from ADMIN_HISTORY_BASE_OBJECTS_TBL where ");
-				ArrayList<String> conditions = new ArrayList<String>();
+				ArrayList<String> conditions = new ArrayList<>();
 
 				String stDateString = null;
 				if (startDate.getSelection() != null) {
@@ -1067,7 +1071,7 @@ public class AdminDialog extends Dialog {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		composite.setExpanded(false);
+//		composite.setExpanded(false);
 
 	}
 
